@@ -8,11 +8,6 @@ use App\Http\Controllers\Api\Location\Request\UpdateLocationRequest;
 use App\Http\Controllers\Api\Location\Resource\LocationResource;
 use App\Http\Controllers\Api\Location\Service\LocationService;
 use App\Http\Controllers\Controller;
-use App\Models\Location;
-use Illuminate\Http\Request;
-
-use function App\Providers\successResponseDelete;
-use function App\Providers\successResponsePut;
 
 class LocationController extends Controller
 {
