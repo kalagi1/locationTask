@@ -52,11 +52,7 @@ class LocationRepository implements LocationRepositoryInterface {
             'longitude',
             'marker_color_hex',
             DB::raw(
-                '(6371 * acos(cos(radians(' . $latitude . ')) 
-                * cos(radians(latitude)) 
-                * cos(radians(longitude) - radians(' . $longitude . ')) 
-                + sin(radians(' . $latitude . ')) 
-                * sin(radians(latitude)))) AS distance')
+                'sqrt(POWER(('.$latitude.' - latitude),2) + POWER(('.$longitude.' - longitude),2)) as distance')
         )
         ->orderBy('distance')
         ->get();
