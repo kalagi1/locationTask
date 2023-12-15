@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api\Location\Repository;
 
-use App\Http\Controllers\Api\Location\Interface\LocationInterface;
+use App\Http\Controllers\Api\Location\Interface\LocationRepositoryInterface;
 use App\Models\Location;
 use Illuminate\Support\Facades\DB;
 
-class LocationRepository implements LocationInterface {
+class LocationRepository implements LocationRepositoryInterface {
     private $location;
 
     public function __construct(Location $location)
@@ -60,6 +60,7 @@ class LocationRepository implements LocationInterface {
         )
         ->orderBy('distance')
         ->get();
+        
 
         return $nearestLocations;
     }

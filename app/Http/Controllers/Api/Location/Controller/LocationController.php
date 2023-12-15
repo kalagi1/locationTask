@@ -24,7 +24,7 @@ class LocationController extends Controller
     }
 
     public function store(AddLocationRequest $request){
-        return response()->json(new LocationResource($this->service->addLocation()), 201);
+        return response()->json(new LocationResource($this->service->addLocation($request)), 201);
     }
 
     public function show($id){

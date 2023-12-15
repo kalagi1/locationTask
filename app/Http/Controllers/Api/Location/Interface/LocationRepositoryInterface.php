@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Location\Interface;
 
-interface LocationInterface {
+interface LocationRepositoryInterface {
     public function getAllLocations();
     public function addLocation();
     public function getLocationById($id);

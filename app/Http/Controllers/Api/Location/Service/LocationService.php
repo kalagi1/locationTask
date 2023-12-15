@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\Location\Service;
 
-use App\Http\Controllers\Api\Location\Interface\LocationInterface;
+use App\Http\Controllers\Api\Location\Interface\LocationRepositoryInterface;
 
 class LocationService{
 
     private $repository;
 
-    public function __construct(LocationInterface $repository)
+    public function __construct(LocationRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
