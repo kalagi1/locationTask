@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api\Location\Interface;
 
 interface LocationRepositoryInterface {
     public function getAllLocations();
-    public function addLocation();
-    public function getLocationById($id);
-    public function updateLocationById($id);
-    public function deleteLocationById($id);
-    public function rotates($latitude,$longitude);
+    public function addLocation(string $name , float $latitude , float $longitude , string $hexColor);
+    public function getLocationById(int $id);
+    public function updateLocationById(int $id , string $name , float $latitude , float $longitude , string $hexColor);
+    public function deleteLocationById(int $id);
+    public function rotates(float $latitude, float $longitude);
 }

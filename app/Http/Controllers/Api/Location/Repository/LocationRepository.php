@@ -18,20 +18,20 @@ class LocationRepository implements LocationRepositoryInterface {
         return $this->location->all();
     }
 
-    public function addLocation(){
+    public function addLocation(string $name , float $latitude , float $longitude , string $hexColor){
         return $this->location->create([
-            "name" => request('name'),
-            "latitude" => request('latitude'),
-            "longitude" => request('longitude'),
-            "marker_color_hex" => request('marker_color_hex'),
+            "name" => $name,
+            "latitude" => $latitude,
+            "longitude" => $longitude,
+            "marker_color_hex" => $hexColor,
         ]);
     }
 
-    public function getLocationById($id){
+    public function getLocationById(int $id){
         return $this->location->where('id',$id)->firstOrFail();
     }
 
-    public function updateLocationById($id){
+    public function updateLocationById(int $id,string $name , float $latitude , float $longitude , string $hexColor){
         return $this->getLocationById($id)->update([
             "name" => request('name'),
             "latitude" => request('latitude'),
@@ -40,11 +40,11 @@ class LocationRepository implements LocationRepositoryInterface {
         ]);
     }
 
-    public function deleteLocationById($id){
+    public function deleteLocationById(int $id){
         return $this->getLocationById($id)->delete();
     }
 
-    public function rotates($latitude,$longitude){
+    public function rotates(float $latitude, float $longitude){
         $nearestLocations = Location::select(
             'id',
             'name',

@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Location\Request\UpdateLocationRequest;
 use App\Http\Controllers\Api\Location\Resource\LocationResource;
 use App\Http\Controllers\Api\Location\Service\LocationService;
 use App\Http\Controllers\Controller;
+use Throwable;
 
 class LocationController extends Controller
 {
@@ -24,19 +25,19 @@ class LocationController extends Controller
     }
 
     public function store(AddLocationRequest $request){
-        return response()->json(new LocationResource($this->service->addLocation($request)), 201);
+        return response()->json(new LocationResource($this->service->addLocation($request->input('name'),$request->input('latitude'),$request->input('longitude'),$request->input('marker_color_hex'))), 201);
     }
 
-    public function show($id){
+    public function show(int $id){
         return response()->json(new LocationResource($this->service->getLocationById($id)), 201);
     }
 
-    public function update(UpdateLocationRequest $request,$id){
-        $this->service->updateLocationById($id);
+    public function update(UpdateLocationRequest $request,int $id){
+        $this->service->updateLocationById($id,$request->input('name'),$request->input('latitude'),$request->input('longitude'),$request->input('marker_color_hex'));
         return response()->json("",204);
     }
 
-    public function destroy($id){
+    public function destroy(int $id){
         $this->service->deleteLocationById($id);
         return response()->json("",204);
     }
